@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="js/jquery-3.1.1.min.js"></script>
+	<style type="text/css">
+		li{
+			border:1px solid red;
+			height: 100px;
+			background-color: red;
+			margin-top: 10px;
+			overflow: scroll;
+		}
+	</style>
+</head>
+<body>
+<ul id="ul1">
+</ul>
+	<script type="text/javascript">
+	$(function(){
+	 $.ajax({
+	 	url:"http://route.showapi.com/107-32",
+	 	data:"showapi_appid=38362&showapi_sign=9ec554d41d81484ca0df7239acea02ea",
+	 	success:function(data){
+	 	 var conList = data.showapi_res_body.list;
+	 	 for (var i = 0; i < conList.length; i++) {
+	 	 	console.log(conList[i].content);
+	 	 	var li = $("<li></li>");
+	 	 	li.html("<p>"+"题目："+conList[i].title+"</p>"+"<p>"+"笑话"+conList[i].content+"</p>");
+	 	 	$("#ul1").append(li);
+	 	 }
+	 	}
+	 })
+	})
+	</script>
+</body>
+</html>
